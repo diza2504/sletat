@@ -1,0 +1,1895 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="urn:SletatRu:Contracts:Soap11Gate:v1" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Soap11Gate" targetNamespace="urn:SletatRu:Contracts:Soap11Gate:v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="urn:SletatRu:Contracts:Soap11Gate:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlActualPriceData:v1" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="urn:SletatRu:DataTypes:CityCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:CountryCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:GeoTreeItemCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelStarsCollection:v1" />
+      <xs:import namespace="urn:SamoSoft:DataTypes:OperatorLoadStateCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:MealCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:TourOperatorCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlTourData:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlContinueSearchData:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlTourDates:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelInformation:v2" />
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelCommentCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelLinkingInfoCollection:v1" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/SamoSoft.Searcher.Engine" />
+      <xs:element name="ActualizePriceByCode">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="code" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ActualizePriceByCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="urn:SletatRu:DataTypes:XmlActualPriceData:v1" minOccurs="0" name="ActualizePriceByCodeResult" nillable="true" type="q1:XmlActualPriceData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ActualizePrice">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sourceId" type="xs:int" />
+            <xs:element minOccurs="0" name="offerId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="requestId" type="xs:int" />
+            <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="selectedResources" nillable="true" type="q2:ArrayOfint" />
+            <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="useSimpleMethod" type="xs:boolean" />
+            <xs:element minOccurs="0" name="actualizationCommand" nillable="true" type="xs:int" />
+            <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="commandArguments" nillable="true" type="q3:ArrayOfstring" />
+            <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ActualizePriceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="urn:SletatRu:DataTypes:XmlActualPriceData:v1" minOccurs="0" name="ActualizePriceResult" nillable="true" type="q4:XmlActualPriceData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCities">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="countryId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCitiesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="urn:SletatRu:DataTypes:CityCollection:v1" minOccurs="0" name="GetCitiesResult" nillable="true" type="q5:CityCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCountries">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="townFromId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCountriesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="urn:SletatRu:DataTypes:CountryCollection:v1" minOccurs="0" name="GetCountriesResult" nillable="true" type="q6:CountryCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDepartCities">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDepartCitiesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="urn:SletatRu:DataTypes:CityCollection:v1" minOccurs="0" name="GetDepartCitiesResult" nillable="true" type="q7:CityCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetGeoTree">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="countryId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetGeoTreeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="urn:SletatRu:DataTypes:GeoTreeItemCollection:v1" minOccurs="0" name="GetGeoTreeResult" nillable="true" type="q8:GeoTreeItemCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotels">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="countryId" type="xs:int" />
+            <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="towns" nillable="true" type="q9:ArrayOfint" />
+            <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="stars" nillable="true" type="q10:ArrayOfint" />
+            <xs:element minOccurs="0" name="filter" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="count" type="xs:int" />
+            <xs:element minOccurs="0" name="useTree" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="urn:SletatRu:DataTypes:HotelCollection:v1" minOccurs="0" name="GetHotelsResult" nillable="true" type="q11:HotelCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelStars">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="countryId" type="xs:int" />
+            <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="towns" nillable="true" type="q12:ArrayOfint" />
+            <xs:element minOccurs="0" name="useTree" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelStarsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="urn:SletatRu:DataTypes:HotelStarsCollection:v1" minOccurs="0" name="GetHotelStarsResult" nillable="true" type="q13:HotelStarsCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRequestState">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRequestStateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q14="urn:SamoSoft:DataTypes:OperatorLoadStateCollection:v1" minOccurs="0" name="GetRequestStateResult" nillable="true" type="q14:OperatorLoadStateCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetLoadState">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetLoadStateResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="urn:SamoSoft:DataTypes:OperatorLoadStateCollection:v1" minOccurs="0" name="GetLoadStateResult" nillable="true" type="q15:OperatorLoadStateCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMeals">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMealsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="urn:SletatRu:DataTypes:MealCollection:v1" minOccurs="0" name="GetMealsResult" nillable="true" type="q16:MealCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTourOperators">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="townFromId" type="xs:int" />
+            <xs:element minOccurs="0" name="countryId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTourOperatorsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q17="urn:SletatRu:DataTypes:TourOperatorCollection:v1" minOccurs="0" name="GetTourOperatorsResult" nillable="true" type="q17:TourOperatorCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="countryId" type="xs:int" />
+            <xs:element minOccurs="0" name="cityFromId" type="xs:int" />
+            <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cities" nillable="true" type="q18:ArrayOfint" />
+            <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="meals" nillable="true" type="q19:ArrayOfint" />
+            <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="stars" nillable="true" type="q20:ArrayOfint" />
+            <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="hotels" nillable="true" type="q21:ArrayOfint" />
+            <xs:element minOccurs="0" name="adults" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="kids" nillable="true" type="xs:int" />
+            <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="kidsAges" nillable="true" type="q22:ArrayOfint" />
+            <xs:element minOccurs="0" name="nightsMin" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="nightsMax" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="priceMin" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="priceMax" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="currencyAlias" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="departFrom" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="departTo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="hotelIsNotInStop" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="hasTickets" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="ticketsIncluded" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="useFilter" nillable="true" type="xs:boolean" />
+            <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="f_to_id" nillable="true" type="q23:ArrayOfint" />
+            <xs:element minOccurs="0" name="useTree" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="includeDescriptions" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="showEconomOnly" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="cacheMode" nillable="true" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CreateRequestResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTours">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestId" type="xs:int" />
+            <xs:element minOccurs="0" name="pageSize" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="pageNumber" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="countryId" type="xs:int" />
+            <xs:element minOccurs="0" name="cityFromId" type="xs:int" />
+            <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cities" nillable="true" type="q24:ArrayOfint" />
+            <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="meals" nillable="true" type="q25:ArrayOfint" />
+            <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="stars" nillable="true" type="q26:ArrayOfint" />
+            <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="hotels" nillable="true" type="q27:ArrayOfint" />
+            <xs:element minOccurs="0" name="adults" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="kids" nillable="true" type="xs:int" />
+            <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="kidsAges" nillable="true" type="q28:ArrayOfint" />
+            <xs:element minOccurs="0" name="nightsMin" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="nightsMax" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="priceMin" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="priceMax" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="currencyAlias" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="departFrom" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="departTo" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="hotelIsNotInStop" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="hasTickets" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="ticketsIncluded" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="updateResult" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="useFilter" nillable="true" type="xs:boolean" />
+            <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="f_to_id" nillable="true" type="q29:ArrayOfint" />
+            <xs:element minOccurs="0" name="useTree" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="groupBy" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="includeDescriptions" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="showEconomOnly" nillable="true" type="xs:boolean" />
+            <xs:element minOccurs="0" name="cacheMode" nillable="true" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetToursResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q30="urn:SletatRu:DataTypes:XmlTourData:v1" minOccurs="0" name="GetToursResult" nillable="true" type="q30:XmlTourData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ContinueSearch">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ContinueSearchResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q31="urn:SletatRu:DataTypes:XmlContinueSearchData:v1" minOccurs="0" name="ContinueSearchResult" nillable="true" type="q31:XmlContinueSearchData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRequestResult">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRequestResultResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q32="urn:SletatRu:DataTypes:XmlTourData:v1" minOccurs="0" name="GetRequestResultResult" nillable="true" type="q32:XmlTourData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetToursResult">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestId" type="xs:int" />
+            <xs:element minOccurs="0" name="pageSize" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="pageNumber" nillable="true" type="xs:int" />
+            <xs:element minOccurs="0" name="updateResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetToursResultResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q33="urn:SletatRu:DataTypes:XmlTourData:v1" minOccurs="0" name="GetToursResultResult" nillable="true" type="q33:XmlTourData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveTourOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestId" type="xs:int" />
+            <xs:element minOccurs="0" name="offerId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sourceId" type="xs:int" />
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="info" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="officeId" type="xs:int" />
+            <xs:element minOccurs="0" name="originType" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="touristId" nillable="true" type="xs:string" />
+            <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="subwayIds" nillable="true" type="q34:ArrayOfint" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveTourOrderResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveRequestOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="info" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="officeId" type="xs:int" />
+            <xs:element minOccurs="0" name="originType" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sendMeCopy" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveRequestOrderResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTourDates">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="dptCityId" type="xs:int" />
+            <xs:element minOccurs="0" name="countryId" type="xs:int" />
+            <xs:element xmlns:q35="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="resorts" nillable="true" type="q35:ArrayOfint" />
+            <xs:element xmlns:q36="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="sources" nillable="true" type="q36:ArrayOfint" />
+            <xs:element minOccurs="0" name="checkLicenseSources" nillable="true" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTourDatesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q37="urn:SletatRu:DataTypes:XmlTourDates:v1" minOccurs="0" name="GetTourDatesResult" nillable="true" type="q37:XmlTourDates" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelInformation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="hotelId" type="xs:int" />
+            <xs:element minOccurs="0" name="cssStylesheet" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="noCache" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelInformationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q38="urn:SletatRu:DataTypes:HotelInformation:v2" minOccurs="0" name="GetHotelInformationResult" nillable="true" type="q38:HotelInformation" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelComments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="hotelId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelCommentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q39="urn:SletatRu:DataTypes:HotelCommentCollection:v1" minOccurs="0" name="GetHotelCommentsResult" nillable="true" type="q39:HotelCommentCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelsLinkingInformation">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetHotelsLinkingInformationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q40="urn:SletatRu:DataTypes:HotelLinkingInfoCollection:v1" minOccurs="0" name="GetHotelsLinkingInformationResult" nillable="true" type="q40:HotelLinkingInfoCollection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSourseAssurances">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sourceId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSourseAssurancesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/SamoSoft.Searcher.Engine" minOccurs="0" name="GetSourseAssurancesResult" nillable="true" type="q41:ArrayOfSourceRequisite" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:AuthData:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:AuthData:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AuthData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AuthData" nillable="true" type="tns:AuthData" />
+      <xs:element name="AuthInfo" nillable="true" type="tns:AuthData" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlActualPriceData:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlActualPriceData:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlOilTax:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlResourceData:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlResource:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlActualTourInfo:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlVisa:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:VisaSurchargeExtendInfo:v1" />
+      <xs:complexType name="XmlActualPriceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsError" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsFound" type="xs:boolean" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NextPossibleCommands" nillable="true" type="q1:ArrayOfint" />
+          <xs:element xmlns:q2="urn:SletatRu:DataTypes:XmlOilTax:v1" minOccurs="0" name="OilTaxes" nillable="true" type="q2:ArrayOfXmlOilTax" />
+          <xs:element minOccurs="0" name="RandomNumber" type="xs:int" />
+          <xs:element xmlns:q3="urn:SletatRu:DataTypes:XmlResourceData:v1" minOccurs="0" name="ResourceData" nillable="true" type="q3:ArrayOfXmlResourceData" />
+          <xs:element xmlns:q4="urn:SletatRu:DataTypes:XmlResource:v1" minOccurs="0" name="Resources" nillable="true" type="q4:ArrayOfXmlResource" />
+          <xs:element minOccurs="0" name="SessionId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q5="urn:SletatRu:DataTypes:XmlActualTourInfo:v1" minOccurs="0" name="TourInfo" nillable="true" type="q5:XmlActualTourInfo" />
+          <xs:element xmlns:q6="urn:SletatRu:DataTypes:XmlVisa:v1" minOccurs="0" name="Visa" nillable="true" type="q6:XmlVisa" />
+          <xs:element xmlns:q7="urn:SletatRu:DataTypes:VisaSurchargeExtendInfo:v1" minOccurs="0" name="VisasExtendInfo" nillable="true" type="q7:ArrayOfVisaSurchargeExtendInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlActualPriceData" nillable="true" type="tns:XmlActualPriceData" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfint" nillable="true" type="tns:ArrayOfint" />
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlOilTax:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlOilTax:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfXmlOilTax">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="XmlOilTax" nillable="true" type="tns:XmlOilTax" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfXmlOilTax" nillable="true" type="tns:ArrayOfXmlOilTax" />
+      <xs:complexType name="XmlOilTax">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AgeFrom" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="AgeTo" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="AirCompanyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AirportName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrencyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="HostName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PartnerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PeriodEndDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PeriodStartDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ResortName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tax" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlOilTax" nillable="true" type="tns:XmlOilTax" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlResourceData:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlResourceData:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfXmlResourceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="XmlResourceData" nillable="true" type="tns:XmlResourceData" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfXmlResourceData" nillable="true" type="tns:ArrayOfXmlResourceData" />
+      <xs:complexType name="XmlResourceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ResourceId" type="xs:int" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlResourceData" nillable="true" type="tns:XmlResourceData" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlResource:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlResource:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfXmlResource">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="XmlResource" nillable="true" type="tns:XmlResource" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfXmlResource" nillable="true" type="tns:ArrayOfXmlResource" />
+      <xs:complexType name="XmlResource">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Exclude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GroupId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsChecked" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlResource" nillable="true" type="tns:XmlResource" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlActualTourInfo:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlActualTourInfo:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelAvailabilityStatus:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:TicketsIncludedStatus:v1" />
+      <xs:complexType name="XmlActualTourInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Adults" type="xs:unsignedByte" />
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" minOccurs="0" name="BusinessTicketsDpt" type="q1:TicketAvailabilityStatus" />
+          <xs:element xmlns:q2="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" minOccurs="0" name="BusinessTicketsRtn" type="q2:TicketAvailabilityStatus" />
+          <xs:element minOccurs="0" name="CheckIn" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CheckOut" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CityFromName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" minOccurs="0" name="EconomTicketsDpt" type="q3:TicketAvailabilityStatus" />
+          <xs:element xmlns:q4="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" minOccurs="0" name="EconomTicketsRtn" type="q4:TicketAvailabilityStatus" />
+          <xs:element minOccurs="0" name="ExactOriginalPrice" type="xs:float" />
+          <xs:element minOccurs="0" name="ExactPrice" type="xs:float" />
+          <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HotelDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HotelDescriptionUrl" nillable="true" type="xs:string" />
+          <xs:element xmlns:q5="urn:SletatRu:DataTypes:HotelAvailabilityStatus:v1" minOccurs="0" name="HotelIsInStop" type="q5:HotelAvailabilityStatus" />
+          <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HotelPhotosCount" type="xs:int" />
+          <xs:element minOccurs="0" name="HotelTitleImageUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HtPlaceDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HtPlaceName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Kids" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="MealDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MealName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nights" type="xs:int" />
+          <xs:element minOccurs="0" name="OfferId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalCurrencyId" type="xs:int" />
+          <xs:element minOccurs="0" name="OriginalPrice" type="xs:int" />
+          <xs:element minOccurs="0" name="OriginalPriceCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Price" type="xs:int" />
+          <xs:element minOccurs="0" name="PriceCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:float" />
+          <xs:element minOccurs="0" name="RequestId" type="xs:int" />
+          <xs:element minOccurs="0" name="ResortName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceId" type="xs:int" />
+          <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceSearchFormUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StarName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysCityFromId" type="xs:int" />
+          <xs:element minOccurs="0" name="SysCityFromName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysCountryId" type="xs:int" />
+          <xs:element minOccurs="0" name="SysCountryName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysHotelId" type="xs:int" />
+          <xs:element minOccurs="0" name="SysHotelName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysHtPlaceId" type="xs:int" />
+          <xs:element minOccurs="0" name="SysHtPlaceName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysMealId" type="xs:int" />
+          <xs:element minOccurs="0" name="SysMealName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysResortId" type="xs:int" />
+          <xs:element minOccurs="0" name="SysResortName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysRoomId" type="xs:int" />
+          <xs:element minOccurs="0" name="SysRoomName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysStarId" type="xs:int" />
+          <xs:element minOccurs="0" name="SysStarName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q6="urn:SletatRu:DataTypes:TicketsIncludedStatus:v1" minOccurs="0" name="TicketsIncluded" type="q6:TicketsIncludedStatus" />
+          <xs:element minOccurs="0" name="TourName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TourUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlActualTourInfo" nillable="true" type="tns:XmlActualTourInfo" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:simpleType name="TicketAvailabilityStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Stop" />
+          <xs:enumeration value="Available" />
+          <xs:enumeration value="Request" />
+          <xs:enumeration value="Unknown">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="TicketAvailabilityStatus" nillable="true" type="tns:TicketAvailabilityStatus" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelAvailabilityStatus:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelAvailabilityStatus:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:simpleType name="HotelAvailabilityStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Available" />
+          <xs:enumeration value="Stop" />
+          <xs:enumeration value="Request" />
+          <xs:enumeration value="-Unknown">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="HotelAvailabilityStatus" nillable="true" type="tns:HotelAvailabilityStatus" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:TicketsIncludedStatus:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:TicketsIncludedStatus:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:simpleType name="TicketsIncludedStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NotIncluded" />
+          <xs:enumeration value="Included" />
+          <xs:enumeration value="Unknown">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="TicketsIncludedStatus" nillable="true" type="tns:TicketsIncludedStatus" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlVisa:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlVisa:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="XmlVisa">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrencyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Price" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlVisa" nillable="true" type="tns:XmlVisa" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:VisaSurchargeExtendInfo:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:VisaSurchargeExtendInfo:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfVisaSurchargeExtendInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="VisaSurchargeExtendInfo" nillable="true" type="tns:VisaSurchargeExtendInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfVisaSurchargeExtendInfo" nillable="true" type="tns:ArrayOfVisaSurchargeExtendInfo" />
+      <xs:complexType name="VisaSurchargeExtendInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AgeFrom" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="AgeTo" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CitizenshipName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrencyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HostName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsExpress" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IssueDaysFrom" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IssueDaysTo" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IssueOnArrival" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IssueTownName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PassportType" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Price" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SourceId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="VisaSurchargeExtendInfo" nillable="true" type="tns:VisaSurchargeExtendInfo" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:CityCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:CityCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" />
+      <xs:complexType name="CityCollection">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="City" nillable="true" type="tns:City" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CityCollection" nillable="true" type="tns:CityCollection" />
+      <xs:complexType name="City">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:NamedDbObject:v1" base="q1:NamedDbObjectOfint">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CountryId" type="xs:int" />
+              <xs:element minOccurs="0" name="Default" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DescriptionUrl" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="IsPopular" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ParentId" nillable="true" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="City" nillable="true" type="tns:City" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:NamedDbObject:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:NamedDbObject:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:DbObject:v1" />
+      <xs:complexType name="NamedDbObjectOfint">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="NamedDbObjectOf{0}{#}" Namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:DbObject:v1" base="q1:DbObjectOfint">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="NamedDbObjectOfint" nillable="true" type="tns:NamedDbObjectOfint" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:DbObject:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:DbObject:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="DbObjectOfint">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbObjectOf{0}{#}" Namespace="urn:SletatRu:DataTypes:DbObject:v1" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DbObjectOfint" nillable="true" type="tns:DbObjectOfint" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:CountryCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:CountryCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:Country:v1" />
+      <xs:complexType name="CountryCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:Country:v1" minOccurs="0" maxOccurs="unbounded" name="Country" nillable="true" type="q1:Country" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CountryCollection" nillable="true" type="tns:CountryCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:Country:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:Country:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" />
+      <xs:complexType name="Country">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:NamedDbObject:v1" base="q1:NamedDbObjectOfint">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Alias" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Flags" type="xs:int" />
+              <xs:element minOccurs="0" name="HasTickets" type="xs:boolean" />
+              <xs:element minOccurs="0" name="HotelIsNotInStop" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsVisa" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Rank" type="xs:int" />
+              <xs:element minOccurs="0" name="TicketsIncluded" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="Country" nillable="true" type="tns:Country" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:GeoTreeItemCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:GeoTreeItemCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:GeoTreeItem:v1" />
+      <xs:complexType name="GeoTreeItemCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:GeoTreeItem:v1" minOccurs="0" maxOccurs="unbounded" name="GeoTreeItem" nillable="true" type="q1:GeoTreeItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GeoTreeItemCollection" nillable="true" type="tns:GeoTreeItemCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:GeoTreeItem:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:GeoTreeItem:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" />
+      <xs:complexType name="GeoTreeItem">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:NamedDbObject:v1" base="q1:NamedDbObjectOfint">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="IsPopular" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ParentId" nillable="true" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GeoTreeItem" nillable="true" type="tns:GeoTreeItem" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:Hotel:v1" />
+      <xs:complexType name="HotelCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:Hotel:v1" minOccurs="0" maxOccurs="unbounded" name="Hotel" nillable="true" type="q1:Hotel" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelCollection" nillable="true" type="tns:HotelCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:Hotel:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:Hotel:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" />
+      <xs:complexType name="Hotel">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:NamedDbObject:v1" base="q1:NamedDbObjectOfint">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BeachLineId" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="CommonRate" type="xs:float" />
+              <xs:element minOccurs="0" name="IsInBonusProgram" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PhotosCount" type="xs:int" />
+              <xs:element minOccurs="0" name="Rate" type="xs:float" />
+              <xs:element minOccurs="0" name="StarId" type="xs:int" />
+              <xs:element minOccurs="0" name="StarName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="TownId" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="Hotel" nillable="true" type="tns:Hotel" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelStarsCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelStarsCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelStars:v1" />
+      <xs:complexType name="HotelStarsCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:HotelStars:v1" minOccurs="0" maxOccurs="unbounded" name="HotelStars" nillable="true" type="q1:HotelStars" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelStarsCollection" nillable="true" type="tns:HotelStarsCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelStars:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelStars:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" />
+      <xs:complexType name="HotelStars">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:NamedDbObject:v1" base="q1:NamedDbObjectOfint">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="HotelStars" nillable="true" type="tns:HotelStars" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SamoSoft:DataTypes:OperatorLoadStateCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SamoSoft:DataTypes:OperatorLoadStateCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SamoSoft:DataTypes:OperatorLoadState:v1" />
+      <xs:complexType name="OperatorLoadStateCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SamoSoft:DataTypes:OperatorLoadState:v1" minOccurs="0" maxOccurs="unbounded" name="OperatorLoadState" nillable="true" type="q1:OperatorLoadState" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperatorLoadStateCollection" nillable="true" type="tns:OperatorLoadStateCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SamoSoft:DataTypes:OperatorLoadState:v1" elementFormDefault="qualified" targetNamespace="urn:SamoSoft:DataTypes:OperatorLoadState:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" />
+      <xs:complexType name="OperatorLoadState">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:NamedDbObject:v1" base="q1:NamedDbObjectOfint">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ExecutionTimeMs" type="xs:int" />
+              <xs:element minOccurs="0" name="IsCached" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsError" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsPersistentCacheUsed" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsProcessed" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsSkipped" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsTimeout" type="xs:boolean" />
+              <xs:element minOccurs="0" name="MaxFullPrice" type="xs:int" />
+              <xs:element minOccurs="0" name="MaxPrice" type="xs:int" />
+              <xs:element minOccurs="0" name="MinFullPrice" type="xs:int" />
+              <xs:element minOccurs="0" name="MinPrice" type="xs:int" />
+              <xs:element minOccurs="0" name="OnlineErrorMessage" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="RowsCount" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="OperatorLoadState" nillable="true" type="tns:OperatorLoadState" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:MealCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:MealCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:Meal:v1" />
+      <xs:complexType name="MealCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:Meal:v1" minOccurs="0" maxOccurs="unbounded" name="Meal" nillable="true" type="q1:Meal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MealCollection" nillable="true" type="tns:MealCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:Meal:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:Meal:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" />
+      <xs:complexType name="Meal">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:NamedDbObject:v1" base="q1:NamedDbObjectOfint">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="Meal" nillable="true" type="tns:Meal" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:TourOperatorCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:TourOperatorCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:TourOperator:v1" />
+      <xs:complexType name="TourOperatorCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:TourOperator:v1" minOccurs="0" maxOccurs="unbounded" name="TourOperator" nillable="true" type="q1:TourOperator" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TourOperatorCollection" nillable="true" type="tns:TourOperatorCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:TourOperator:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:TourOperator:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:NamedDbObject:v1" />
+      <xs:complexType name="TourOperator">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="urn:SletatRu:DataTypes:NamedDbObject:v1" base="q1:NamedDbObjectOfint">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Enabled" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="TourOperator" nillable="true" type="tns:TourOperator" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlTourData:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlTourData:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SamoSoft:DataTypes:OperatorLoadStateCollection:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlTourOilTax:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlTourRecord:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlVisaRange:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlVisa:v1" />
+      <xs:complexType name="XmlTourData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HotelCount" type="xs:int" />
+          <xs:element xmlns:q1="urn:SamoSoft:DataTypes:OperatorLoadStateCollection:v1" minOccurs="0" name="LoadState" nillable="true" type="q1:OperatorLoadStateCollection" />
+          <xs:element xmlns:q2="urn:SletatRu:DataTypes:XmlTourOilTax:v1" minOccurs="0" name="OilTaxes" nillable="true" type="q2:ArrayOfXmlTourOilTax" />
+          <xs:element minOccurs="0" name="RequestId" type="xs:int" />
+          <xs:element xmlns:q3="urn:SletatRu:DataTypes:XmlTourRecord:v1" minOccurs="0" name="Rows" nillable="true" type="q3:ArrayOfXmlTourRecord" />
+          <xs:element minOccurs="0" name="RowsCount" type="xs:int" />
+          <xs:element xmlns:q4="urn:SletatRu:DataTypes:XmlVisaRange:v1" minOccurs="0" name="SourcesVisas" nillable="true" type="q4:XmlVisaRange" />
+          <xs:element xmlns:q5="urn:SletatRu:DataTypes:XmlVisa:v1" minOccurs="0" name="Visa" nillable="true" type="q5:XmlVisa" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlTourData" nillable="true" type="tns:XmlTourData" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlTourOilTax:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlTourOilTax:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfXmlTourOilTax">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="XmlTourOilTax" nillable="true" type="tns:XmlTourOilTax" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfXmlTourOilTax" nillable="true" type="tns:ArrayOfXmlTourOilTax" />
+      <xs:complexType name="XmlTourOilTax">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AirCompanyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AirportName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrencyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Date1" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Date2" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="PartnerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ResortId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ResortName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceId" type="xs:int" />
+          <xs:element minOccurs="0" name="Tax" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlTourOilTax" nillable="true" type="tns:XmlTourOilTax" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlTourRecord:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlTourRecord:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelAvailabilityStatus:v1" />
+      <xs:import namespace="urn:SletatRu:DataTypes:TicketsIncludedStatus:v1" />
+      <xs:complexType name="ArrayOfXmlTourRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="XmlTourRecord" nillable="true" type="tns:XmlTourRecord" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfXmlTourRecord" nillable="true" type="tns:ArrayOfXmlTourRecord" />
+      <xs:complexType name="XmlTourRecord">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Adults" type="xs:int" />
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" minOccurs="0" name="BusinessTicketsDpt" type="q1:TicketAvailabilityStatus" />
+          <xs:element xmlns:q2="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" minOccurs="0" name="BusinessTicketsRtn" type="q2:TicketAvailabilityStatus" />
+          <xs:element minOccurs="0" name="CheckInDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CityFromId" type="xs:int" />
+          <xs:element minOccurs="0" name="CityFromName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CounryId" type="xs:int" />
+          <xs:element minOccurs="0" name="CountryId" type="xs:int" />
+          <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditMonthlyPay" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CreditMonths" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DiscountCaption" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DiscountExpires" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DiscountPercent" nillable="true" type="xs:float" />
+          <xs:element minOccurs="0" name="EarlyBookingValidTill" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q3="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" minOccurs="0" name="EconomTicketsDpt" type="q3:TicketAvailabilityStatus" />
+          <xs:element xmlns:q4="urn:SletatRu:DataTypes:TicketAvailabilityStatus:v1" minOccurs="0" name="EconomTicketsRtn" type="q4:TicketAvailabilityStatus" />
+          <xs:element minOccurs="0" name="FewBusinessTicketsDpt" type="xs:int" />
+          <xs:element minOccurs="0" name="FewBusinessTicketsRtn" type="xs:int" />
+          <xs:element minOccurs="0" name="FewEconomTicketsDpt" type="xs:int" />
+          <xs:element minOccurs="0" name="FewEconomTicketsRtn" type="xs:int" />
+          <xs:element minOccurs="0" name="FewPlacesInHotel" type="xs:int" />
+          <xs:element minOccurs="0" name="Flags" nillable="true" type="xs:unsignedLong" />
+          <xs:element minOccurs="0" name="Found" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="GiftCaption" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HotelDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HotelDescriptionUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HotelId" type="xs:int" />
+          <xs:element xmlns:q5="urn:SletatRu:DataTypes:HotelAvailabilityStatus:v1" minOccurs="0" name="HotelIsInStop" type="q5:HotelAvailabilityStatus" />
+          <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HotelPhotosCount" type="xs:int" />
+          <xs:element minOccurs="0" name="HotelRating" type="xs:float" />
+          <xs:element minOccurs="0" name="HotelTitleImageUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HtPlaceDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HtPlaceId" type="xs:int" />
+          <xs:element minOccurs="0" name="HtPlaceName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsDemoMode" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Kids" type="xs:int" />
+          <xs:element minOccurs="0" name="MealDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MealId" type="xs:int" />
+          <xs:element minOccurs="0" name="MealName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nights" type="xs:int" />
+          <xs:element minOccurs="0" name="OfferId" type="xs:long" />
+          <xs:element minOccurs="0" name="OfferIdStr" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalHotelName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalHtPlaceName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalMealName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalRoomName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalStarName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalTownName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Price" type="xs:int" />
+          <xs:element minOccurs="0" name="PriceType" type="xs:int" />
+          <xs:element minOccurs="0" name="RawPrice" type="xs:int" />
+          <xs:element minOccurs="0" name="ReceivingParty" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ResortDescriptionUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ResortId" type="xs:int" />
+          <xs:element minOccurs="0" name="ResortName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoomId" type="xs:int" />
+          <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceId" type="xs:int" />
+          <xs:element minOccurs="0" name="SourceImageUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceSearchFormUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StarId" type="xs:int" />
+          <xs:element minOccurs="0" name="StarName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q6="urn:SletatRu:DataTypes:TicketsIncludedStatus:v1" minOccurs="0" name="TicketsIncluded" type="q6:TicketsIncludedStatus" />
+          <xs:element minOccurs="0" name="TourArchiveHash" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TourHash" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TourName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TourUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlTourRecord" nillable="true" type="tns:XmlTourRecord" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlVisaRange:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlVisaRange:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:XmlVisaRangeItem:v1" />
+      <xs:complexType name="XmlVisaRange">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrencyName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:XmlVisaRangeItem:v1" minOccurs="0" name="Items" nillable="true" type="q1:ArrayOfXmlVisaRangeItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlVisaRange" nillable="true" type="tns:XmlVisaRange" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlVisaRangeItem:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlVisaRangeItem:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfXmlVisaRangeItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="XmlVisaRangeItem" nillable="true" type="tns:XmlVisaRangeItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfXmlVisaRangeItem" nillable="true" type="tns:ArrayOfXmlVisaRangeItem" />
+      <xs:complexType name="XmlVisaRangeItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaxPrice" type="xs:int" />
+          <xs:element minOccurs="0" name="MinPrice" type="xs:int" />
+          <xs:element minOccurs="0" name="SourceId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlVisaRangeItem" nillable="true" type="tns:XmlVisaRangeItem" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlContinueSearchData:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlContinueSearchData:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="XmlContinueSearchData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RequestId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlContinueSearchData" nillable="true" type="tns:XmlContinueSearchData" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:XmlTourDates:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:XmlTourDates:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="XmlTourDates">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Dates" nillable="true" type="q1:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="XmlTourDates" nillable="true" type="tns:XmlTourDates" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelInformation:v2" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelInformation:v2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelInfoFacilityGroup:v1" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="HotelInformation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AirportDistance" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BuildingDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CityCenterDistance" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CountryId" type="xs:int" />
+          <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DistanceToLifts" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="District" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Error" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:HotelInfoFacilityGroup:v1" minOccurs="0" name="HotelFacilities" nillable="true" type="q1:ArrayOfHotelInfoFacilityGroup" />
+          <xs:element minOccurs="0" name="HotelId" type="xs:int" />
+          <xs:element minOccurs="0" name="HotelRate" type="xs:float" />
+          <xs:element minOccurs="0" name="HouseNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ImageCount" type="xs:int" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ImageUrls" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:float" />
+          <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:float" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NativeAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OldCyrillicName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OldLatinName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostIndex" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RatingMeal" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="RatingOverall" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="RatingPlace" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="RatingService" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Renovation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Resort" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ResortId" type="xs:int" />
+          <xs:element minOccurs="0" name="RoomsCount" type="xs:int" />
+          <xs:element minOccurs="0" name="Site" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Square" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StarId" type="xs:int" />
+          <xs:element minOccurs="0" name="StarName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Video" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelInformation" nillable="true" type="tns:HotelInformation" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelInfoFacilityGroup:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelInfoFacilityGroup:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelInfoFacility:v1" />
+      <xs:complexType name="ArrayOfHotelInfoFacilityGroup">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="HotelInfoFacilityGroup" nillable="true" type="tns:HotelInfoFacilityGroup" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfHotelInfoFacilityGroup" nillable="true" type="tns:ArrayOfHotelInfoFacilityGroup" />
+      <xs:complexType name="HotelInfoFacilityGroup">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:HotelInfoFacility:v1" minOccurs="0" name="Facilities" nillable="true" type="q1:ArrayOfHotelInfoFacility" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelInfoFacilityGroup" nillable="true" type="tns:HotelInfoFacilityGroup" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelInfoFacility:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelInfoFacility:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfHotelInfoFacility">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="HotelInfoFacility" nillable="true" type="tns:HotelInfoFacility" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfHotelInfoFacility" nillable="true" type="tns:ArrayOfHotelInfoFacility" />
+      <xs:complexType name="HotelInfoFacility">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Hit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelInfoFacility" nillable="true" type="tns:HotelInfoFacility" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelCommentCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelCommentCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelComment:v1" />
+      <xs:complexType name="HotelCommentCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:HotelComment:v1" minOccurs="0" maxOccurs="unbounded" name="HotelComment" nillable="true" type="q1:HotelComment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelCommentCollection" nillable="true" type="tns:HotelCommentCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelComment:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelComment:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="HotelComment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreateDateFormatted" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EndRestFormatted" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsTourist" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Negative" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Positive" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Rate" type="xs:int" />
+          <xs:element minOccurs="0" name="ShortComment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StartRestFormatted" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WasThere" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelComment" nillable="true" type="tns:HotelComment" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelLinkingInfoCollection:v1" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelLinkingInfoCollection:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:SletatRu:DataTypes:HotelLinkingInfo:v2" />
+      <xs:complexType name="HotelLinkingInfoCollection">
+        <xs:sequence>
+          <xs:element xmlns:q1="urn:SletatRu:DataTypes:HotelLinkingInfo:v2" minOccurs="0" maxOccurs="unbounded" name="HotelLinkingInfo" nillable="true" type="q1:HotelLinkingInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelLinkingInfoCollection" nillable="true" type="tns:HotelLinkingInfoCollection" />
+    </xs:schema>
+    <xs:schema xmlns:tns="urn:SletatRu:DataTypes:HotelLinkingInfo:v2" elementFormDefault="qualified" targetNamespace="urn:SletatRu:DataTypes:HotelLinkingInfo:v2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="HotelLinkingInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HotelId" type="xs:int" />
+          <xs:element minOccurs="0" name="TopHotelsId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HotelLinkingInfo" nillable="true" type="tns:HotelLinkingInfo" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SamoSoft.Searcher.Engine" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SamoSoft.Searcher.Engine" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfSourceRequisite">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SourceRequisite" nillable="true" type="tns:SourceRequisite" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSourceRequisite" nillable="true" type="tns:ArrayOfSourceRequisite" />
+      <xs:complexType name="SourceRequisite">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FinSecurityDocuments" nillable="true" type="tns:ArrayOfSourceFinSecurityDocument" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NameShort" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhysicalAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Site" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SourceRequisite" nillable="true" type="tns:SourceRequisite" />
+      <xs:complexType name="ArrayOfSourceFinSecurityDocument">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SourceFinSecurityDocument" nillable="true" type="tns:SourceFinSecurityDocument" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSourceFinSecurityDocument" nillable="true" type="tns:ArrayOfSourceFinSecurityDocument" />
+      <xs:complexType name="SourceFinSecurityDocument">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DateOfFinSecurityFrom" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DateOfFinSecurityTo" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocumentDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocumentNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FinSecurityAmount" type="xs:int" />
+          <xs:element minOccurs="0" name="OrgAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrgName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrgPostAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WayToFinSecurity" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SourceFinSecurityDocument" nillable="true" type="tns:SourceFinSecurityDocument" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="Soap11Gate_ActualizePriceByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizePriceByCode" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_ActualizePriceByCode_InputMessage_Headers">
+    <wsdl:part xmlns:q1="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q1:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_ActualizePriceByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizePriceByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_ActualizePrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizePrice" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_ActualizePrice_InputMessage_Headers">
+    <wsdl:part xmlns:q2="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q2:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_ActualizePrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizePriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetCities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCities" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetCities_InputMessage_Headers">
+    <wsdl:part xmlns:q3="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q3:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetCities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetCountries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountries" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetCountries_InputMessage_Headers">
+    <wsdl:part xmlns:q4="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q4:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetCountries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetDepartCities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepartCities" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetDepartCities_InputMessage_Headers">
+    <wsdl:part xmlns:q5="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q5:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetDepartCities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepartCitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetGeoTree_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGeoTree" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetGeoTree_InputMessage_Headers">
+    <wsdl:part xmlns:q6="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q6:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetGeoTree_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGeoTreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotels_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotels" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotels_InputMessage_Headers">
+    <wsdl:part xmlns:q7="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q7:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelStars_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelStars" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelStars_InputMessage_Headers">
+    <wsdl:part xmlns:q8="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q8:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelStars_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelStarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetRequestState_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestState" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetRequestState_InputMessage_Headers">
+    <wsdl:part xmlns:q9="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q9:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetRequestState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetLoadState_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoadState" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetLoadState_InputMessage_Headers">
+    <wsdl:part xmlns:q10="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q10:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetLoadState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoadStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetMeals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeals" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetMeals_InputMessage_Headers">
+    <wsdl:part xmlns:q11="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q11:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetMeals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMealsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTourOperators_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTourOperators" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTourOperators_InputMessage_Headers">
+    <wsdl:part xmlns:q12="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q12:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTourOperators_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTourOperatorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_CreateRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRequest" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_CreateRequest_InputMessage_Headers">
+    <wsdl:part xmlns:q13="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q13:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_CreateRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTours_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTours" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTours_InputMessage_Headers">
+    <wsdl:part xmlns:q14="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q14:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTours_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetToursResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_ContinueSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ContinueSearch" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_ContinueSearch_InputMessage_Headers">
+    <wsdl:part xmlns:q15="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q15:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_ContinueSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContinueSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetRequestResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestResult" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetRequestResult_InputMessage_Headers">
+    <wsdl:part xmlns:q16="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q16:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetRequestResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetToursResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetToursResult" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetToursResult_InputMessage_Headers">
+    <wsdl:part xmlns:q17="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q17:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetToursResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetToursResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_SaveTourOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTourOrder" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_SaveTourOrder_InputMessage_Headers">
+    <wsdl:part xmlns:q18="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q18:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_SaveTourOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTourOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_SaveRequestOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRequestOrder" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_SaveRequestOrder_InputMessage_Headers">
+    <wsdl:part xmlns:q19="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q19:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_SaveRequestOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRequestOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTourDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTourDates" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTourDates_InputMessage_Headers">
+    <wsdl:part xmlns:q20="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q20:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetTourDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTourDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelInformation" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelInformation_InputMessage_Headers">
+    <wsdl:part xmlns:q21="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q21:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelComments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelComments" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelComments_InputMessage_Headers">
+    <wsdl:part xmlns:q22="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q22:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelComments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelsLinkingInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelsLinkingInformation" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelsLinkingInformation_InputMessage_Headers">
+    <wsdl:part xmlns:q23="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q23:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetHotelsLinkingInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHotelsLinkingInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetSourseAssurances_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSourseAssurances" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetSourseAssurances_InputMessage_Headers">
+    <wsdl:part xmlns:q24="urn:SletatRu:DataTypes:AuthData:v1" name="AuthInfo" element="q24:AuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="Soap11Gate_GetSourseAssurances_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSourseAssurancesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Soap11Gate">
+    <wsdl:operation name="ActualizePriceByCode">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ActualizePriceByCode" message="tns:Soap11Gate_ActualizePriceByCode_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ActualizePriceByCodeResponse" message="tns:Soap11Gate_ActualizePriceByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizePrice">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ActualizePrice" message="tns:Soap11Gate_ActualizePrice_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ActualizePriceResponse" message="tns:Soap11Gate_ActualizePrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCities">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetCities" message="tns:Soap11Gate_GetCities_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetCitiesResponse" message="tns:Soap11Gate_GetCities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetCountries" message="tns:Soap11Gate_GetCountries_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetCountriesResponse" message="tns:Soap11Gate_GetCountries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartCities">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetDepartCities" message="tns:Soap11Gate_GetDepartCities_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetDepartCitiesResponse" message="tns:Soap11Gate_GetDepartCities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGeoTree">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetGeoTree" message="tns:Soap11Gate_GetGeoTree_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetGeoTreeResponse" message="tns:Soap11Gate_GetGeoTree_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotels">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotels" message="tns:Soap11Gate_GetHotels_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelsResponse" message="tns:Soap11Gate_GetHotels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotelStars">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelStars" message="tns:Soap11Gate_GetHotelStars_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelStarsResponse" message="tns:Soap11Gate_GetHotelStars_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestState">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetRequestState" message="tns:Soap11Gate_GetRequestState_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetRequestStateResponse" message="tns:Soap11Gate_GetRequestState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoadState">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetLoadState" message="tns:Soap11Gate_GetLoadState_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetLoadStateResponse" message="tns:Soap11Gate_GetLoadState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMeals">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetMeals" message="tns:Soap11Gate_GetMeals_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetMealsResponse" message="tns:Soap11Gate_GetMeals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTourOperators">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetTourOperators" message="tns:Soap11Gate_GetTourOperators_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetTourOperatorsResponse" message="tns:Soap11Gate_GetTourOperators_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRequest">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/CreateRequest" message="tns:Soap11Gate_CreateRequest_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/CreateRequestResponse" message="tns:Soap11Gate_CreateRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTours">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetTours" message="tns:Soap11Gate_GetTours_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetToursResponse" message="tns:Soap11Gate_GetTours_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ContinueSearch">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ContinueSearch" message="tns:Soap11Gate_ContinueSearch_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ContinueSearchResponse" message="tns:Soap11Gate_ContinueSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestResult">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetRequestResult" message="tns:Soap11Gate_GetRequestResult_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetRequestResultResponse" message="tns:Soap11Gate_GetRequestResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetToursResult">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetToursResult" message="tns:Soap11Gate_GetToursResult_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetToursResultResponse" message="tns:Soap11Gate_GetToursResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTourOrder">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/SaveTourOrder" message="tns:Soap11Gate_SaveTourOrder_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/SaveTourOrderResponse" message="tns:Soap11Gate_SaveTourOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRequestOrder">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/SaveRequestOrder" message="tns:Soap11Gate_SaveRequestOrder_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/SaveRequestOrderResponse" message="tns:Soap11Gate_SaveRequestOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTourDates">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetTourDates" message="tns:Soap11Gate_GetTourDates_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetTourDatesResponse" message="tns:Soap11Gate_GetTourDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotelInformation">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelInformation" message="tns:Soap11Gate_GetHotelInformation_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelInformationResponse" message="tns:Soap11Gate_GetHotelInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotelComments">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelComments" message="tns:Soap11Gate_GetHotelComments_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelCommentsResponse" message="tns:Soap11Gate_GetHotelComments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotelsLinkingInformation">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelsLinkingInformation" message="tns:Soap11Gate_GetHotelsLinkingInformation_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelsLinkingInformationResponse" message="tns:Soap11Gate_GetHotelsLinkingInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSourseAssurances">
+      <wsdl:input wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetSourseAssurances" message="tns:Soap11Gate_GetSourseAssurances_InputMessage" />
+      <wsdl:output wsaw:Action="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetSourseAssurancesResponse" message="tns:Soap11Gate_GetSourseAssurances_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Soap11" type="tns:Soap11Gate">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ActualizePriceByCode">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ActualizePriceByCode" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_ActualizePriceByCode_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizePrice">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ActualizePrice" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_ActualizePrice_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCities">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetCities" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetCities_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetCountries" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetCountries_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartCities">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetDepartCities" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetDepartCities_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeoTree">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetGeoTree" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetGeoTree_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotels">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotels" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetHotels_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotelStars">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelStars" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetHotelStars_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestState">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetRequestState" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetRequestState_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoadState">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetLoadState" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetLoadState_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMeals">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetMeals" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetMeals_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTourOperators">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetTourOperators" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetTourOperators_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRequest">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/CreateRequest" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_CreateRequest_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTours">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetTours" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetTours_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContinueSearch">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/ContinueSearch" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_ContinueSearch_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestResult">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetRequestResult" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetRequestResult_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetToursResult">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetToursResult" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetToursResult_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTourOrder">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/SaveTourOrder" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_SaveTourOrder_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRequestOrder">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/SaveRequestOrder" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_SaveRequestOrder_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTourDates">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetTourDates" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetTourDates_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotelInformation">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelInformation" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetHotelInformation_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotelComments">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelComments" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetHotelComments_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotelsLinkingInformation">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetHotelsLinkingInformation" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetHotelsLinkingInformation_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSourseAssurances">
+      <soap:operation soapAction="urn:SletatRu:Contracts:Soap11Gate:v1/Soap11Gate/GetSourseAssurances" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:Soap11Gate_GetSourseAssurances_InputMessage_Headers" part="AuthInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Soap11Gate">
+    <wsdl:port name="Soap11" binding="tns:Soap11">
+      <soap:address location="http://module.sletat.ru/XmlGate.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
