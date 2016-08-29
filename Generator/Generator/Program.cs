@@ -7,13 +7,17 @@ using MongoDB.Driver;
 
 using NPOI.SS.UserModel;
 using System.Linq;
+using System.Globalization;
 
 namespace Generator
 {
 	class MainClass
 	{
-		const string mongoConnStr = "mongodb://127.0.0.1/hotels";
-		const string xlsPath = "sample.xls";
+		const string mongoConnStr = "mongodb://127.0.0.1/sletat";
+
+		static readonly NumberFormatInfo nfi = new NumberFormatInfo {
+			NumberDecimalSeparator = "."
+		};
 
 		static readonly Dictionary<string, Func<Hotel, string>> meta = new Dictionary<string, Func<Hotel, string>> {
 			{"article : Art", h => h.HotelId.ToString() },
@@ -62,7 +66,7 @@ namespace Generator
 <div id=""map""></div>
 <p>
 <script type=""text/javascript"">// <![CDATA[
-function initMap() {{var myLatLng = {{lat: {h.Latitude}, lng: {h.Longitude}}};var map = new google.maps.Map(document.getElementById('map'), {{zoom: 12,center: myLatLng}});var marker = new google.maps.Marker({{position: myLatLng,map: map,title: '{h.Name}'}});}} // ]]></script>
+function initMap() {{var myLatLng = {{lat: {h.Latitude?.ToString(nfi)}, lng: {h.Longitude?.ToString(nfi)}}};var map = new google.maps.Map(document.getElementById('map'), {{zoom: 12,center: myLatLng}});var marker = new google.maps.Marker({{position: myLatLng,map: map,title: '{h.Name}'}});}} // ]]></script>
 <script async="""" defer=""defer"" src=""https://maps.googleapis.com/maps/api/js?key=AIzaSyDCtUvbAM6TqKrEEsu6jY_favvXdxkgp9w&callback=initMap"" type=""text/javascript""></script>
 </p>"},
 			{"cf_sletat_script : Туры в этот отель:", h => $@"<p>
@@ -114,7 +118,7 @@ sletat.FrameSearch.$create({{city:1264,country:{h.CountryId},resorts:[{h.ResortI
 		static void PopulateXls (string path, IEnumerable<Hotel> hotels)
 		{
 			IWorkbook wb;
-			using (FileStream stream = new FileStream (xlsPath, FileMode.Open, FileAccess.Read))
+			using (FileStream stream = new FileStream (path, FileMode.Open, FileAccess.Read))
 				wb = WorkbookFactory.Create (stream);
 			ISheet sheet = wb.GetSheetAt (0);
 
@@ -134,7 +138,7 @@ sletat.FrameSearch.$create({{city:1264,country:{h.CountryId},resorts:[{h.ResortI
 				Console.WriteLine ($"{++index} {h.Name}");
 			}
 
-			using (var stream = new FileStream (xlsPath, FileMode.Open, FileAccess.Write))
+			using (var stream = new FileStream (path, FileMode.Open, FileAccess.Write))
 				wb.Write (stream);
 		}
 
