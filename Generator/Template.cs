@@ -1,25 +1,17 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-
-using MongoDB.Bson.Serialization;
-using MongoDB.Driver;
-
-using NPOI.SS.UserModel;
 using System.Linq;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Generator
 {
-	class MainClass
+	public static class Template
 	{
-		const string mongoConnStr = "mongodb://127.0.0.1/sletat";
-
 		static readonly NumberFormatInfo nfi = new NumberFormatInfo {
 			NumberDecimalSeparator = "."
 		};
 
-		static readonly Dictionary<string, Func<Hotel, string>> meta = new Dictionary<string, Func<Hotel, string>> {
+		public static Dictionary<string, Func<Hotel, string>> Meta { get; } = new Dictionary<string, Func<Hotel, string>> {
 			{"article : Art", h => h.HotelId.ToString() },
 			{"name : Name", h => h.Name },
 			{"cf_countryid : CountryId", h => h.CountryId.ToString() },
@@ -97,62 +89,6 @@ sletat.FrameSearch.$create({{city:1264,country:{h.CountryId},resorts:[{h.ResortI
 			{"cf__id_21_name_tip_otela_ : \"Тип отеля\"", h => FlattenByName(h, "Тип отеля")}
 		};
 
-		public static void Main (string [] args)
-		{
-			InitMappings ();
-
-			var mongoUrl = new MongoUrl (mongoConnStr);
-			var client = new MongoClient (mongoUrl);
-			var db = client.GetDatabase (mongoUrl.DatabaseName);
-			var hotels = db.GetCollection<Hotel> ("hotels");
-
-			var countryId = int.Parse (args [0]);
-			var path = args [1];
-
-			var filter = Builders<Hotel>.Filter.Eq (h => h.CountryId, countryId);
-			var foundHotels = hotels.Find (filter).ToCursor().ToEnumerable ();
-
-			PopulateXls (path, foundHotels);
-		}
-
-		static void PopulateXls (string path, IEnumerable<Hotel> hotels)
-		{
-			IWorkbook wb;
-			using (FileStream stream = new FileStream (path, FileMode.Open, FileAccess.Read))
-				wb = WorkbookFactory.Create (stream);
-			ISheet sheet = wb.GetSheetAt (0);
-
-			var headersRow = sheet.GetRow (0);
-			var headerToIndex = new Dictionary<string, int> ();
-			for (int i = 0; i <= headersRow.LastCellNum; i++) {
-				var c = headersRow.GetCell (i);
-				if (c == null)
-					continue;
-
-				headerToIndex.Add (c.StringCellValue, i);
-			}
-
-			int index = 0;
-			foreach (var h in hotels) {
-				PopulateXls (sheet, headerToIndex, h);
-				Console.WriteLine ($"{++index} {h.Name}");
-			}
-
-			using (var stream = new FileStream (path, FileMode.Open, FileAccess.Write))
-				wb.Write (stream);
-		}
-
-
-		static void PopulateXls (ISheet sheet, Dictionary<string, int> headerToIndex, Hotel hotel)
-		{
-			var r = sheet.CreateRow (sheet.LastRowNum + 1);
-
-			foreach (var kvp in meta) {
-				var cell = r.CreateCell (headerToIndex [kvp.Key]);
-				cell.SetCellValue (kvp.Value (hotel));
-			}
-		}
-
 		static string FlattenByName (Hotel h, string key)
 		{
 			var hFacilities = h.HotelFacilities;
@@ -165,27 +101,7 @@ sletat.FrameSearch.$create({{city:1264,country:{h.CountryId},resorts:[{h.ResortI
 
 			var facilities = hf.Facilities.Select (f => string.IsNullOrWhiteSpace (f.Hit) ? f.Name : $"{f.Hit}, {f.Name}")
 										  .Select (s => $"<li>{s}</li>");
-			return $"<ul>{string.Join(string.Empty,facilities)}</ul>";
-		}
-
-		static void InitMappings ()
-		{
-			BsonClassMap.RegisterClassMap<Hotel> (cm => {
-				cm.AutoMap ();
-				cm.SetIgnoreExtraElements (true);
-			});
-
-			BsonClassMap.RegisterClassMap<HotelFacility> (cm => {
-				cm.AutoMap ();
-				cm.MapProperty (hf => hf.HotelFacilityId).SetElementName ("Id");
-				//cm.SetIgnoreExtraElements (true);
-			});
-
-			BsonClassMap.RegisterClassMap<Facility> (cm => {
-				cm.AutoMap ();
-				cm.MapProperty (f => f.FacilityId).SetElementName ("Id");
-				//cm.SetIgnoreExtraElements (true);
-			});
+			return $"<ul>{string.Join (string.Empty, facilities)}</ul>";
 		}
 	}
 }
