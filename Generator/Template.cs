@@ -3,6 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 
+using Data;
+
 namespace Generator
 {
 	public static class Template

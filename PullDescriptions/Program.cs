@@ -1,6 +1,9 @@
-﻿using Data;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Generator
+using Data;
+
+namespace PullDescriptions
 {
 	class MainClass
 	{
@@ -15,9 +18,17 @@ namespace Generator
 
 			var repo = new Repository (mongoConnStr);
 			var foundHotels = repo.FindHotelsForCountry (countryId);
+		}
 
-			var xls = new XlsManager (Template.Meta);
-			xls.PopulateXls (path, foundHotels);
+		static void PullDescription (IEnumerable<Hotel> hotels)
+		{
+			foreach (var h in hotels)
+				PullDescription (h);
+		}
+
+		static void PullDescription (Hotel hotel)
+		{
+			throw new NotImplementedException ();
 		}
 	}
 }

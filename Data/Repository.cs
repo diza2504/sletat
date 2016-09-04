@@ -3,13 +3,13 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
-namespace Generator
+namespace Data
 {
-	public class SletatRepository
+	public class Repository
 	{
 		readonly IMongoCollection<Hotel> hotels;
 
-		public SletatRepository (string mongoConnectionString)
+		public Repository (string mongoConnectionString)
 		{
 			var mongoUrl = new MongoUrl (mongoConnectionString);
 			var client = new MongoClient (mongoUrl);

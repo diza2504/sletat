@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Generator
+namespace Data
 {
 	public class Hotel
 	{
