@@ -88,7 +88,8 @@ sletat.FrameSearch.$create({{city:1264,country:{h.CountryId},resorts:[{h.ResortI
 			{"cf__id_18_name_uslugi_dla_de : \"Услуги для детей\"", h => FlattenByName(h, "Услуги для детей")},
 			{"cf__id_19_name_plaz_ : \"Пляж\"", h => FlattenByName(h, "Пляж")},
 			{"cf__id_20_name_tip_plaza_ : \"Тип пляжа\"", h => FlattenByName(h, "Тип пляжа")},
-			{"cf__id_21_name_tip_otela_ : \"Тип отеля\"", h => FlattenByName(h, "Тип отеля")}
+			{"cf__id_21_name_tip_otela_ : \"Тип отеля\"", h => FlattenByName(h, "Тип отеля")},
+			{"cf_description : Описание отеля:", h => h.HtmlDescription }
 		};
 
 		static string FlattenByName (Hotel h, string key)

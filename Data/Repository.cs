@@ -23,6 +23,13 @@ namespace Data
 			return hotels.Find (filter).ToCursor ().ToEnumerable ();
 		}
 
+		public void UpdateDescription (Hotel hotel, string description)
+		{
+			var idFilter = Builders<Hotel>.Filter.Eq (h => h.Id, hotel.Id);
+			var update = Builders<Hotel>.Update.Set(h => h.HtmlDescription, description);
+			hotels.UpdateOne (idFilter, update);
+		}
+
 		public static void InitMappings ()
 		{
 			BsonClassMap.RegisterClassMap<Hotel> (cm => {

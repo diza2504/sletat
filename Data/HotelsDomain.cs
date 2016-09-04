@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Data
 {
 	public class Hotel
 	{
+		public ObjectId Id { get; set; }
 		public string Address { get; set; }
 		public double? AirportDistance { get; set; }
 		public string Area { get; set; }
@@ -13,7 +16,10 @@ namespace Data
 		public double? CityCenterDistance { get; set; }
 		public int CountryId { get; set; }
 		public string CountryName { get; set; }
+
 		public string Description { get; set; }
+		public string HtmlDescription { get; set; }
+
 		public string DistanceToLifts { get; set; }
 		public string District { get; set; }
 		public string Email { get; set; }
@@ -49,6 +55,7 @@ namespace Data
 		public string StarName { get; set; }
 		public string Street { get; set; }
 		public string Video { get; set; }
+
 	}
 
 	public class Facility
